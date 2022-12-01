@@ -20,6 +20,8 @@ import {
   Modal,
 } from 'react-native';
 
+import Form from '.src/components/Form';
+
 import {
   Colors,
   DebugInstructions,
@@ -27,11 +29,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
-const nuevoUsuario: () => Node = () => {
-  console.log('Nuevo usuario creado exitosamente wu');
-};
-
+  
 const App: () => Node = () => {
   const [modalVisible, setModalVisible] = useState(false);
   console.log(modalVisible);
@@ -39,7 +37,9 @@ const App: () => Node = () => {
     setModalVisible(true);
   }, 3000);
   const isDarkMode = useColorScheme() === 'dark';
-
+  const newUser = () {
+    console.log("hiciste clic en el botón de nuevo usuario")
+  }
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -54,6 +54,7 @@ const App: () => Node = () => {
           style={styles.btnNuevoUsuario}>
           <Text style={styles.btnTextoNuevoUsuario}>Nueva cita</Text>
         </Pressable>
+        <Form modalVisible={modalVisible} />
       </Text>
       <Modal animationSlide="fade" visible={modalVisible}>
         <Text>Formulario de registro</Text>
